@@ -1,0 +1,748 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" class="manywho" style="height: 100%;">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="icon" href="https://assets.manywho.com/img/favicon/apple-touch-icon.png">
+    <link rel="shortcut icon" href="https://assets.manywho.com/img/favicon/apple-touch-icon.png" type="image/x-icon" />	
+    <link rel="apple-touch-icon" href="https://assets.manywho.com/img/favicon/apple-touch-icon.png" />	
+    <link rel="apple-touch-icon" sizes="57x57" href="https://assets.manywho.com/img/favicon/apple-touch-icon-57x57.png" />	
+    <link rel="apple-touch-icon" sizes="72x72" href="https://assets.manywho.com/img/favicon/apple-touch-icon-72x72.png" />	
+    <link rel="apple-touch-icon" sizes="76x76" href="https://assets.manywho.com/img/favicon/apple-touch-icon-76x76.png" />	
+    <link rel="apple-touch-icon" sizes="114x114" href="https://assets.manywho.com/img/favicon/apple-touch-icon-114x114.png" />	
+    <link rel="apple-touch-icon" sizes="120x120" href="https://assets.manywho.com/img/favicon/apple-touch-icon-120x120.png" />	
+    <link rel="apple-touch-icon" sizes="144x144" href="https://assets.manywho.com/img/favicon/apple-touch-icon-144x144.png" />	
+    <link rel="apple-touch-icon" sizes="152x152" href="https://assets.manywho.com/img/favicon/apple-touch-icon-152x152.png" />	
+    <link rel="apple-touch-icon" sizes="180x180" href="https://assets.manywho.com/img/favicon/apple-touch-icon-180x180.png" />	
+    <link rel="icon" sizes="192x192" href="https://assets.manywho.com/img/favicon/android-icon.png">	
+    <meta name="msapplication-square310x310logo" content="https://assets.manywho.com/img/favicon/microsoft-310x310.png">
+    <title>Virtual Hackathon</title>
+    <style>
+    
+        /***********************************************************************/
+        /* IMPORTANT NOTE
+        /***********************************************************************/
+        /* BE SURE TO CHANGE THE FOLLOWING FLOW VALUE IN JSON INPUTS ARRAY BELOW. SET TO LARGER TRANSPARENT LOGO THAT IS USED ON CERTAIN PAGES.
+        /* {![Player Setting: Transparent Logo]}
+        /* Example: https://files-manywho-com.s3.amazonaws.com/9c4d8f07-a865-4cd9-a026-5b709a49ace4/NCDIT_Logo_transparent.png
+        /* Fake Company Logos can be found here: https://github.com/pigment/fake-logos
+        /***********************************************************************/
+        
+        /***********************************************************************/
+        /* NC DIT MISCELLANEOUS CUSTOMIZATIONS
+        /***********************************************************************/
+        
+        /* Enables IOS momentum scrolling */
+        .mw-bs {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Make background light grey */
+        .main-scroller {
+        	background-color: #ecf0f3 !important;
+        }
+        
+        /* Make content well background white */
+        .main.container {
+            background-color: #FFFFFF !important;
+            border: 1px solid #d5d5d5;
+        }
+
+        /* NC DIT Custom CSS */	
+        /* Hide File Upload 'error' message */	
+        .file-upload span.has-error {	
+            display: none;	
+        }	
+        	
+        /* Change File Upload red to green */	
+        .file-statuses .has-error .help-block {	
+            color: #4caf50 !important;	
+        }
+        
+        /* Make boostrap alert panels Heading bold */
+        .mw-bs .panel-title {
+            font-weight: 900 !important;
+        }
+        
+        /* Signature Pad styling */
+        .mw-bs .signature-box canvas {
+            border: 1px solid #3e7b97 !important;
+            background-color: white !important;
+        }
+        
+        /* Only add vertical separator on larger screens */
+        @media screen and (min-width: 1200px) {
+            /* Add a vertical separator line on Expense Detail inside well */
+            .well > div > div.mw-container:nth-child(2), .well > div > div> div > div.mw-container:nth-child(2) {
+            	border-left: 1px solid #e3e3e3;
+            }
+        }
+        
+        /* Increase font size of <code> */
+        .mw-bs code {
+            font-size: 100% !important;
+        }
+
+        /***********************************************************************/
+        /* EXPENSE SUMMARY TABLE CUSTOMIZATIONS
+        /***********************************************************************/
+
+                
+        /* Remove margin on bottom of all DIVs inside this table */
+        div.expenseSummaryTable .mw-container {
+            margin-bottom: 0px !important;
+        }
+        
+        /* Header Row changes */
+        .expenseSummaryHeaderRow {
+            border-bottom: 1px solid #0b3d619e;
+            background-color: #ecf0f3 !important;
+            color: #0b3d61 !important;
+        }
+        
+        /* Expense Summary Table horizontal lines */
+        div.expenseSummaryTable > div.clearfix > div.mw-container {
+            border-top: 1px solid #e3e3e3;
+        }
+
+        /***********************************************************************/
+        /* INPUT FIELD CUSTOMIZATIONS
+        /***********************************************************************/
+    	
+    	/* Force input controls to black text */
+        .mw-bs .form-control {
+        	color: black !important; 
+        }
+        
+        /* Set input control PLACEHOLDER color */
+        ::placeholder {
+          color: #d0d0d0 !important;
+        }
+                
+        /* Set background color for readonly input controls */
+        .mw-bs .form-control[readonly] {
+        	background-color: #dedede !important;
+        }
+
+    	
+        /***********************************************************************/
+        /* FOOTER CUSTOMIZATIONS
+        /***********************************************************************/
+    	
+    	/* Hide footer on 1200px or less screens */
+        @media screen and (max-width: 1200px) {
+            .footer {
+                display: none;
+            }
+        }
+        
+        /* Show footer on larger screens */
+        @media screen and (min-width: 1200px) {
+            .footer {
+                display: visible;
+            }
+            
+            /* Bootstrap Sticky Footer: https://getbootstrap.com/docs/3.3/examples/sticky-footer/ */	
+            html {	
+                position: relative;	
+                min-height: 100%;	
+            }	
+            
+            body {	
+                /* Margin bottom by footer height */	
+                margin-bottom: 45px;
+            }	
+            
+            .footer {	
+                position: absolute;	
+                bottom: 0;	
+                width: 100%;	
+                /* Set the fixed height of the footer here */	
+                height: 35px;
+                background-color: #f9f9f9;
+                border-top: 1px solid #d5d5d5;
+            }	
+                    	
+            .footer .container {	
+                width: auto;	
+                max-width: 680px;	
+                padding: 0 15px;	
+            }	
+            
+            .footer .container .text-muted {	
+                margin: 0px 0;	
+                font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+                font-size: 12px;
+                color: #b7b7b7;
+            }
+            
+            /* Add margin to bottom of center content well so that it doesn't disappear behind footer */
+            .mw-bs .main {
+                margin-bottom: 55px !important;
+            }
+        }
+
+        /***********************************************************************/
+        /* DROPDOWN CUSTOMIZATIONS
+        /***********************************************************************/
+        
+        /* Hide Dropdown Refresh button */
+        .refresh-button {
+            display: none !important;
+        }
+        
+        /* Hide x button in dropdown */
+        .react-selectize-reset-button-container {
+            display: none !important;
+        }
+        
+        /***********************************************************************/
+        /* HEADER CUSTOMIZATIONS
+        /***********************************************************************/
+        
+        /* Set Heading colors */
+        h1, h2 {
+            color: #092940 !important;
+            font-family: "TransportNew",Helvetica,Arial,sans-serif !important;
+            font-weight: bold !important;
+        }
+        
+        /* Underline under each Heading */
+        h1:after, h2:after {
+            content: "";
+            display: block;
+            background-color: #092940;
+            height: 4px;
+            height: .25rem;
+            margin-top: 10px;
+            margin-top: .625rem;
+        }
+        
+        /***********************************************************************/
+        /* NAVBAR MENU CUSTOMIZATIONS
+        /***********************************************************************/
+        
+        /* Change background image & color of entire full-width navbar */
+        .mw-bs .navbar {
+            background-color: #3f7d97 !important;
+            background-image: url(https://files-manywho-com.s3.amazonaws.com/9c4d8f07-a865-4cd9-a026-5b709a49ace4/bg_poly-accent-light-blue.jpg) !important;
+            border: none !important;
+            background-position: center !important;
+            width: 100% !important;
+            background-size: cover;
+        }
+    
+        /*Boomi logo from URL with small visible label font*/
+        .mw-bs .navbar-default .navbar-brand {
+            background: url(https://files-manywho-com.s3.amazonaws.com/ea5ead2f-1efb-4d16-8950-f813bde310ba/virtual_hackathon_large.png);
+            background-position: center center;
+            background-repeat: no-repeat;
+            font-size: 0px;
+            font-weight: 500;
+            line-height: 20px;
+            width: 275px;
+            /* height: 40px; */
+            margin: 10px 15px 10px 15px !important;
+            padding: 0px 0px 0px 36px !important;
+            font-weight: bold;
+            background-size: contain;
+            
+            /* make background rounded white behind logo for visibility */
+        	border-radius: 15px;
+        	background-color: #fff;
+        	border: 0.5px solid #0b3d61;
+        }
+        /* Persist white background over logo when hovered */
+        .mw-bs .navbar-default .navbar-brand:hover { 
+            background-color: #fff !important;
+        }
+        
+        /* Change text of ACTIVE navbar item */
+        .mw-bs .navbar-default .navbar-nav > .active > a, .mw-bs .navbar-default .navbar-nav > .active > a:focus {
+        	color: #ecf0f3 !important;
+        	font-size: 18px;
+        	font-weight: 900;
+        	
+        	border-bottom: 3px solid #0b3d61;
+        	padding-bottom: 6px
+        }
+        
+        /* Change color on hover of nav menu */
+        .mw-bs .navbar-default .navbar-nav > li > a:hover {
+            color: #0b3d61 !important;
+        }
+        
+        /* Text of INACTIVE navbar item */
+        .mw-bs .navbar-default .navbar-nav > li > a {
+            color: #ecf0f3 !important;
+        	font-size: 18px;
+        	font-weight: 900;
+        }
+        
+        /* Move navbar a:href links down to vertical center */
+        .mw-bs .nav > li > a {
+            padding-top: 20px !important;
+        }
+        
+        /***********************************************************************/
+        /* TABLE CUSTOMIZATIONS
+        /***********************************************************************/
+        
+        /* Align text vertically within row */
+        .mw-bs .table > tbody > tr > td {
+            vertical-align: middle !important;
+        }
+        
+        /* My Requests Table & Expense Detail Table -- align TH for Request Total ($) to the right */
+        [data-sort-property="requestTotalCurrency"], [data-sort-property="expenseTotalCurrency"] {
+            text-align: right !important;
+        }
+
+        /* My Requests Table -- Style Status */
+        div.requestsTable > div.clearfix > div.table-responsive > table.table > tbody > tr > td:nth-child(3), div.expenseDetailTable > div.clearfix > div.table-responsive > table.table > tbody > tr > td:nth-child(2) {
+            font-weight: 900;
+            color: #0b3d61;
+        }
+  
+        /* My Requests Table & Expense Detail Table -- Style Currency $$ */
+        div.requestsTable > div.clearfix > div.table-responsive > table.table > tbody > tr > td:nth-child(6), div.expenseDetailTable > div.clearfix > div.table-responsive > table.table > tbody > tr > td:nth-child(7) {
+            color: green;
+            font-family: Courier New;
+            font-weight: 1000;
+            text-align: right;
+        }
+        
+        /* Set table header text color */
+        table.table > tbody > tr > th {
+            color: #0b3d61 !important;
+        }
+        
+        /* Color odd/Even stripes */
+        .mw-bs .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #ecf0f3 !important;
+        }
+        
+        .mw-bs .table-striped > tbody > tr:nth-of-type(even) {
+            background-color: white !important;
+        }
+        
+        /* Table Name (large text) */
+        .mw-bs .table-container > label {
+            color: #3f658f !important;
+        }
+
+
+        /***********************************************************************/
+        /* BUTTON CUSTOMIZATIONS
+        /***********************************************************************/
+        .btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited {
+            /* Gradient colors from TOP to BOTTOM */
+            background-image: linear-gradient(#d6585d, #aa3339 50%, #90272c) !important;
+            /* Border (set to main middle color in gradient above) */
+            border-color: #aa3339 !important;
+        }
+        
+        .btn-info, .btn-info:hover, .btn-info:active, .btn-info:visited {
+            /* Gradient colors from TOP to BOTTOM */
+            background-image: linear-gradient(#509592, #438885 50%, #367b78) !important;
+            /* Border (set to main middle color in gradient above) */
+            border-color: #438885 !important;
+        }
+        
+        .btn-back, .btn-back:hover, .btn-back:active, .btn-back:visited {
+              /* Gradient colors from TOP to BOTTOM */
+            background-image: linear-gradient(#9fa7b5, #6f7785 50%, #555f69) !important;
+            /* Border (set to main middle color in gradient above) */
+            border-color: #6f7785 !important;  
+        }
+
+        /***********************************************************************/
+        /* GROUP TAB CUSTOMIZATIONS
+        /***********************************************************************/
+        .mw-bs .nav-tabs > li > a {
+            border: 1px solid #00000012 !important; /* make borders on inactive slightly transparent */
+            color: #397aac !important;
+        }
+         
+        .mw-bs .nav-tabs > li.active > a
+        {
+            border: 1px solid #092940 !important;
+            color: white !important;
+            background-color: #5693af !important;
+            font-weight: 900;
+        }
+        
+        /* Add border around tabbed content */
+        .mw-bs .tab-content {
+            margin-top: 0px !important;
+            border: 1px solid rgb(221, 221, 221) !important;
+        }
+
+        /***********************************************************************/
+        /* ORGINAL CLASSES
+        /***********************************************************************/
+        .mw-bs .wait-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            z-index: 1100;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .mw-bs .wait-message {
+            position: relative;
+            text-align: center;
+            margin-top: 1em;
+            display: block;
+            top: 40%;
+            font-size: 2em;
+            padding: 0 2em;
+        }
+
+        /***********************************************************************/
+        /* SPINNER CUSTOMIZATIONS
+        /***********************************************************************/
+
+        .wait-spinner {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          display: block;
+          width: 150px;
+          height: 150px;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          /*background: url(https://files-manywho-com.s3.amazonaws.com/5a98a1f9-d884-4d1b-8fa3-c984306cd504/Dell_Logo_Blue_rgb-300x300.png) no-repeat;*/
+          background-size: 100%;
+          order: 0;
+          flex: 0 1 auto;
+          z-index: 9998;
+          will-change: transform;
+          /*transform: scale(0.75);*/
+        }
+        
+        .wait-spinner:after {
+          content: "";
+          display: inline-block;
+          width: 150px;
+          height: 150px;
+          position: absolute;
+          /*left: -110px;*/
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+          -webkit-animation: spin 1.3s infinite ease-in-out;
+          animation: spin 1.3s infinite ease-in-out;
+          font-size: 34px;
+          background: url("https://files-manywho-com.s3.amazonaws.com/ea5ead2f-1efb-4d16-8950-f813bde310ba/virtual_hackathon_large.png")
+            no-repeat;
+          background-size: 100%;
+          background-position: left center;
+        }
+        
+        .wait-spinner:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -20px;
+          border-radius: 50%;
+          -webkit-filter: blur(6px);
+          filter: blur(6px);
+          width: 150px;
+          height: 2px;
+          background: #000;
+          transform: translate3d(0, 0, 0);
+          -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+          -webkit-animation: spin 1.3s infinite ease-in-out;
+          animation: spin 1.3s infinite ease-in-out;
+        }
+        
+        @-webkit-keyframes spin {
+          0% {
+            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+          }
+          50% {
+            -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+          }
+          100% {
+            -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+          }
+        }
+        
+        @keyframes spin {
+          0% {
+            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+          }
+          50% {
+            -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+          }
+          100% {
+            -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+          }
+        }
+    </style>
+</head>
+<body style="height: 100%;">
+    <div id="manywho">
+        <div id="loader" class="mw-bs" style="width: 100%; height: 100%;">
+            <div class="wait-container">
+                <div class="wait-spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://assets.manywho.com/js/vendor/jquery-2.1.4.min.js"></script>
+
+    <script>
+        var manywho = {
+            cdnUrl: 'https://assets.manywho.com',
+            requires: ['core', 'bootstrap3'],
+            customResources: [	
+              'https://s3.amazonaws.com/flow-ui-components/signature-pad.js',	
+              'https://s3.amazonaws.com/flow-ui-components/signature-pad.css'],
+            initialize: function () {
+
+                var queryParameters = manywho.utils.parseQueryString(window.location.search.substring(1));
+
+                manywho.settings.initialize({
+                    adminTenantId: 'da497693-4d02-45db-bc08-8ea16d2ccbdf',
+                    playerUrl: [ location.protocol, '//', location.host, location.pathname ].join(''),
+                    joinUrl: [ location.protocol, '//', location.host, location.pathname ].join('')
+                });
+
+                /* BEGIN: Querystring Parameters added */	
+                var qs_managerView = queryParameters['qs_managerView'];	
+                var extras = queryParameters['extras'];	
+                var inputs = [];	
+                if (qs_managerView != null)	
+                    inputs.push({ "qs_managerView": qs_managerView });
+                if (extras != null)	
+                    inputs.push({ "extras": extras });
+                    
+                /* Change Transparent Logo that is used on multiple pages and emails: */
+                inputs.push({"Player Setting: Transparent Logo": "https://files-manywho-com.s3.amazonaws.com/9c4d8f07-a865-4cd9-a026-5b709a49ace4/NCDIT_Logo_transparent.png" });
+
+                var jsonInputs = manywho.json.generateFlowInputs(inputs);	
+                /* END */
+
+                var options = {
+                    authentication: {
+                        sessionId: queryParameters['session-token'],
+                        sessionUrl: queryParameters['session-url']
+                    },
+                    navigationElementId: queryParameters['navigation-element-id'],
+                    mode: queryParameters['mode'],
+                    reportingMode: queryParameters['reporting-mode'],
+                    replaceUrl: false,
+                    collaboration: {
+                        isEnabled: false
+                    },
+                    //isFullWidth: true, //Sets flow content to full width
+                    inputs: jsonInputs,  //changed from null
+                    annotations: null,
+                    navigation: {
+                        isFixed: false,
+                        isWizard: false
+                    },
+                    callbacks: [],
+                    theme: queryParameters['theme'] != null ? queryParameters['theme'] : 'yeti',
+                    outcomes: {	
+                      // Change how outcomes are rendered: icon, iconandtext, iconnobackground	
+                      display: "iconandtext",	
+                    }
+                };
+
+                var tenantId = queryParameters['tenant-id'];
+                if (!tenantId) {
+                    tenantId = window.location.pathname
+                                .split('/')
+                                .filter(function (path) {
+                                    return path && path.length > 0;
+                                })[0];
+                }
+
+                manywho.engine.initialize(
+                    tenantId,
+                    queryParameters['flow-id'],
+                    queryParameters['flow-version-id'],
+                    'main',
+                    queryParameters['join'],
+                    queryParameters['authorization'],
+                    options,
+                    queryParameters['initialization']
+                );
+
+            }
+        };
+    </script>
+
+    <script src="https://assets.manywho.com/js/loader.min.js"></script>
+
+
+    <footer class="footer">	
+        <div class="container" style="margin-left: auto; margin-right: auto; text-align: center;">	
+            <p class="text-muted"><img src="https://files-manywho-com.s3.amazonaws.com/ea5ead2f-1efb-4d16-8950-f813bde310ba/virtual_hackathon_small.png" height="30px" style="padding: 0px; margin: 2px 0px 0px 0px; vertical-align: middle;" class="img-fluid">&nbsp;&nbsp; &copy; 2020 Virtual Hackathon</p>	
+        </div>	
+    </footer>
+    
+    <style>
+        .mw-bs .navbar-brand {
+            height:150px;
+        }
+        
+        .footer {
+            background-color: #fff;
+        }
+        
+        .judge-box {
+            border:1px solid grey;
+            background-color:#f5f7f9;
+            padding:5px 15px 0 15px;
+        }
+        
+/**************************************************************************
+ Horizontal Radio styling 
+ ***************************************************************************/
+.mw-bs.flow-container .radio-group{ 
+    margin-left:0; 
+    max-width: 100%;
+}
+.mw-bs.flow-container .radio {
+    display:inline;
+    background-color: #eee;
+    padding:5px 20px;
+    border-radius: 1px 0 0px;
+    border:1px solid #a9a9a9;
+    margin: 0;
+}
+.mw-bs.flow-container .radio span{
+    color:#666;
+}
+.mw-bs.flow-container .radio:first-child {margin-left:0;}
+.mw-bs.flow-container .radio:last-child {margin-right:0;}
+/* clickable field */
+.mw-bs.flow-container .radio-inline input[type=radio],
+.mw-bs.flow-container .radio input[type=radio],
+.mw-bs.flow-container input[type=radio] {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: inline-block;
+    border: 0;
+    background: 0;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    opacity:0;
+}
+.mw-bs.flow-container .radio-inline input[type=radio]:checked:before, 
+.mw-bs.flow-container .radio input[type=radio]:checked:before, 
+.mw-bs.flow-container input[type=radio]:checked:before
+{
+    background-color:inherit;
+    border:0;
+    outline:0;
+}
+.mw-bs.flow-container .radio-inline input[type=radio]:after, 
+.mw-bs.flow-container .radio input[type=radio]:after, 
+.mw-bs.flow-container input[type=radio]:after{
+    border:0;
+    
+}
+/* checked */
+.mw-bs.flow-container .radio-inline input[type=radio]:checked,
+.mw-bs.flow-container .radio input[type=radio]:checked,
+.mw-bs.flow-container input[type=radio]:checked {
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    border: 0;
+    background: 0;
+    background-color:#0C62FB;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    color:#fff;
+    border:1px solid #fff;
+    z-index: 1;
+    opacity:0.5;
+}
+.mw-bs.flow-container .radio-inline input[type=radio]:checked + span,
+.mw-bs.flow-container .radio input[type=radio]:checked + span,
+.mw-bs.flow-container input[type=radio]:checked + span{
+    color: #fff;
+    font-weight: bolder;
+    z-index: 2;
+    position: relative;
+    background-color:red;
+}
+.mw-bs.flow-container .radio-inline input[type=radio]:before, 
+.mw-bs.flow-container .radio input[type=radio]:before, 
+.mw-bs.flow-container input[type=radio]:before{
+    display:none;
+}
+
+.radio-group input[type="radio"] {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width:100%;
+    height:100%;
+    margin:0; 
+    padding:0;
+    box-sizing:content-box;
+    -webkit-appearance: none;
+}
+
+        .mw-bs .btn.home-btn1 {
+            height: 230px;
+            width: 180px;
+            white-space: normal;
+            background-image: url(https://files-manywho-com.s3.amazonaws.com/a71b334c-6998-4459-a88b-99bd9d5ba9b7/tasks.png);
+            background-size: 80px 80px ;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding-top: 200px;
+            background-color: #e5e5e5;
+            font-size:200;
+        }
+        
+        .mw-bs .btn.home-btn2 {
+            height: 230px;
+            width: 180px;
+            white-space: normal;
+            background-image: url(https://files-manywho-com.s3.amazonaws.com/a71b334c-6998-4459-a88b-99bd9d5ba9b7/projs.png);
+            background-size: 80px 80px ;
+            background-repeat: no-repeat;
+            background-position: center;
+            padding-top: 200px;
+            background-color: #e5e5e5;
+        }
+
+
+    </style>
+
+    
+</body>
+</html>
